@@ -21,7 +21,7 @@ pipeline {
         stage('Deploy Frontend to Tomcat') {
             steps {
                 sh '''
-                TOMCAT_WEBAPPS="/Users/chilakakritikareddy/Desktop/SOFTWARE/apache-tomcat-10.1.XX/webapps/reactfrontendapi"
+                TOMCAT_WEBAPPS="/Users/chilakakritikareddy/Desktop/SOFTWARE/apache-tomcat-10.1.43/webapps/reactfrontendapi"
                 rm -rf "$TOMCAT_WEBAPPS"
                 mkdir -p "$TOMCAT_WEBAPPS"
                 cp -R reactfrontend/dist/* "$TOMCAT_WEBAPPS"
@@ -42,9 +42,9 @@ pipeline {
         stage('Deploy Backend to Tomcat') {
             steps {
                 sh '''
-                TOMCAT_WEBAPPS="/Users/chilakakritikareddy/Desktop/SOFTWARE/apache-tomcat-10.1.XX/webapps"
-                rm -f "$TOMCAT_WEBAPPS/springbootbackend.war"
-                rm -rf "$TOMCAT_WEBAPPS/springbootbackend"
+                TOMCAT_WEBAPPS="/Users/chilakakritikareddy/Desktop/SOFTWARE/apache-tomcat-10.1.43/webapps"
+                rm -f "$TOMCAT_WEBAPPS/springbootbackendapi.war"
+                rm -rf "$TOMCAT_WEBAPPS/springbootbackendapi"
                 cp springbootbackend/target/*.war "$TOMCAT_WEBAPPS/"
                 '''
             }
