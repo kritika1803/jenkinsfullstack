@@ -5,7 +5,7 @@ import TaskBoard from "./components/TaskBoard";
 
 function App() {
   return (
-    <Router>
+    <Router basename="/reactfrontendapi">
       <Navbar />
       <div style={{ padding: "20px" }}>
         <Routes>
