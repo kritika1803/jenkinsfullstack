@@ -37,7 +37,6 @@ export default function TaskBoard() {
         {statuses.map((status) => (
           <div key={status} className="column">
             <h3>{status}</h3>
-
             {tasks
               .filter((task) => task.status === status)
               .map((task) => (
@@ -52,18 +51,15 @@ export default function TaskBoard() {
                     {status === "ASSIGNED" && (
                       <button onClick={() => updateStatus(task, "PROGRESS")}>Start</button>
                     )}
-
                     {status === "PROGRESS" && (
                       <>
                         <button onClick={() => updateStatus(task, "COMPLETED")}>Complete</button>
                         <button onClick={() => updateStatus(task, "REJECTED")}>Reject</button>
                       </>
                     )}
-
                     {status === "COMPLETED" && (
                       <button onClick={() => updateStatus(task, "PROGRESS")}>Restart</button>
                     )}
-
                     {status === "REJECTED" && (
                       <button onClick={() => updateStatus(task, "ASSIGNED")}>Reassign</button>
                     )}
