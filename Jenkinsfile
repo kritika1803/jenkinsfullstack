@@ -43,8 +43,8 @@ pipeline {
             steps {
                 sh '''
                 TOMCAT_WEBAPPS="/Users/chilakakritikareddy/Desktop/SOFTWARE/apache-tomcat-10.1.XX/webapps"
-                rm -f "$TOMCAT_WEBAPPS/springbootbackendapi.war"
-                rm -rf "$TOMCAT_WEBAPPS/springbootbackendapi"
+                rm -f "$TOMCAT_WEBAPPS/springbootbackend.war"
+                rm -rf "$TOMCAT_WEBAPPS/springbootbackend"
                 cp springbootbackend/target/*.war "$TOMCAT_WEBAPPS/"
                 '''
             }
