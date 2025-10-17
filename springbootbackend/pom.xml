@@ -64,7 +64,7 @@
 	</dependencies>
 
 	<build>
-	<finalname>springbootbackendapi</finalname>
+	<finalName>springbootbackendapi</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
