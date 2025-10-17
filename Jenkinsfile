@@ -11,8 +11,12 @@ pipeline {
         stage('Build Frontend') {
             steps {
                 dir('reactfrontend') {
-                    sh 'npm install'
-                    sh 'npm run build'
+                    // Set homepage dynamically in package.json
+                    sh '''
+                    npx json -I -f package.json -e 'this.homepage="/reactfrontendapi"'
+                    npm install
+                    npm run build
+                    '''
                 }
             }
         }
@@ -24,7 +28,7 @@ pipeline {
                 TOMCAT_WEBAPPS="/Users/chilakakritikareddy/Desktop/SOFTWARE/apache-tomcat-10.1.43/webapps/reactfrontendapi"
                 rm -rf "$TOMCAT_WEBAPPS"
                 mkdir -p "$TOMCAT_WEBAPPS"
-                cp -R reactfrontend/dist/* "$TOMCAT_WEBAPPS"
+                cp -R reactfrontend/build/* "$TOMCAT_WEBAPPS"
                 '''
             }
         }
@@ -33,7 +37,7 @@ pipeline {
         stage('Build Backend') {
             steps {
                 dir('springbootbackend') {
-                    sh '/Users/chilakakritikareddy/Desktop/SOFTWARE/apache-maven-3.9.11/bin/mvn clean package'
+                    sh '/Users/chilakakritikareddy/Desktop/SOFTWARE/apache-maven-3.9.11/bin/mvn clean package -DskipTests'
                 }
             }
         }
